@@ -1,6 +1,6 @@
 /* Kinder Quest - offline support. Caches the app so it works without internet
    after the first visit. Bump VERSION whenever you change files. */
-const VERSION = 'kq-v1';
+const VERSION = 'kq-v2';
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest', 'css/app.css',
   'js/util.js', 'js/data.js', 'js/themes.js', 'js/audio.js', 'js/progress.js',

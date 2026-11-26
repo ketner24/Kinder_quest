@@ -9,18 +9,21 @@
   /* ---------------- Letters ---------------- */
   D.LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
-  // How the voice should SAY each letter name (text-to-speech reads a lone "A" badly).
+  // How the voice should SAY each letter name. Checked against the Windows voices' phoneme
+  // output: "ay" is read as "eye", "eff"/"ee" get spelled out, "jee" comes out as "dzee",
+  // so A, E, F and G use the plain capital letter, which every engine reads as the letter name.
   D.LETTER_SAY = {
-    A: 'ay', B: 'bee', C: 'see', D: 'dee', E: 'ee', F: 'eff', G: 'jee', H: 'aitch', I: 'eye',
+    A: 'A', B: 'bee', C: 'see', D: 'dee', E: 'E', F: 'F', G: 'G', H: 'aitch', I: 'eye',
     J: 'jay', K: 'kay', L: 'ell', M: 'em', N: 'en', O: 'oh', P: 'pee', Q: 'cue', R: 'are',
     S: 'ess', T: 'tee', U: 'you', V: 'vee', W: 'double you', X: 'ex', Y: 'why', Z: 'zee',
   };
 
-  // Short letter sounds, spelled so speech engines say something close.
+  // Short letter sounds, spelled so speech engines say a syllable instead of spelling letters out.
+  // Avoid repeated consonants ("sss", "zzz") and "ks"/"ih": voices read those as S-S-S, Z-Z-Z, K-S, I-H.
   D.LETTER_SOUND = {
-    A: 'ah', B: 'buh', C: 'kuh', D: 'duh', E: 'eh', F: 'fuh', G: 'guh', H: 'huh', I: 'ih',
-    J: 'juh', K: 'kuh', L: 'luh', M: 'muh', N: 'nuh', O: 'aw', P: 'puh', Q: 'kwuh', R: 'ruh',
-    S: 'sss', T: 'tuh', U: 'uh', V: 'vuh', W: 'wuh', X: 'ks', Y: 'yuh', Z: 'zzz',
+    A: 'ah', B: 'bah', C: 'kuh', D: 'duh', E: 'eh', F: 'fuh', G: 'gah', H: 'huh', I: 'ihh',
+    J: 'juh', K: 'kuh', L: 'lah', M: 'muh', N: 'nuh', O: 'aw', P: 'puh', Q: 'kwuh', R: 'ruh',
+    S: 'sah', T: 'tuh', U: 'uh', V: 'vuh', W: 'wuh', X: 'ecks', Y: 'yah', Z: 'zah',
   };
 
   // Picture words. First word is the classic "A is for apple" word.
@@ -192,7 +195,7 @@
     ['with', 'Play with me.'], ['have', 'I have a ball.'], ['all', 'We all clap.'], ['do', 'I can do it!'], ['be', 'Be kind.'],
     ['will', 'I will try.'], ['into', 'Jump into the pool.'], ['get', 'Get the ball.'], ['that', 'I like that.'], ['so', 'I am so happy.'],
   ];
-  D.SIGHT_SAY = { a: 'ay', I: 'eye' };
+  D.SIGHT_SAY = { a: 'A', I: 'eye' };
   D.sightSentence = (w) => (D.SIGHT.find((s) => s[0] === w) || [w, ''])[1];
   D.word = (w) => ({ d: w, s: D.SIGHT_SAY[w] || w });
 
